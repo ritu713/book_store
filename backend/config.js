@@ -1,5 +1,4 @@
-const PORT = 5005
+const dotenv = require('dotenv')
+dotenv.config()
 
-const mongoURL = "mongodb+srv://root:23p6kXiNgjd85sBR@book-store.yeoacxd.mongodb.net/books-collection?retryWrites=true&w=majority"
-
-module.exports = {PORT, mongoURL}
+module.exports = { mongoURL: process.env.mongoURL, PORT: process.env.PORT}

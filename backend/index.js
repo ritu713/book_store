@@ -3,9 +3,11 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 app.use(express.json())
+const dotenv = require('dotenv')
+dotenv.config()
 
 //urls and other
-const {mongoURL} = require("./config.js")
+const {mongoURL}= require("./config.js")
 const {PORT}  = require("./config.js")
 
 const bookRouteData = require("./routes/booksRoute.js")
