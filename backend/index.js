@@ -5,10 +5,17 @@ const mongoose = require('mongoose')
 app.use(express.json())
 const dotenv = require('dotenv')
 dotenv.config()
+const cors = require('cors')
 
 //urls and other
 const {mongoURL}= require("./config.js")
 const {PORT}  = require("./config.js")
+
+//middleware for handling cors policy
+//allow all origins by default -- cors(*)
+app.use(cors())
+//allowing only custom origins
+// app.use(cors({ origin : 'link', methods : ['GET', 'POST',...], allowedHeaders: [Content-Type,..]}))
 
 const bookRouteData = require("./routes/booksRoute.js")
 app.use("/books", bookRouteData)
