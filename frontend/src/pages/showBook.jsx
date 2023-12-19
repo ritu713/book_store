@@ -9,7 +9,6 @@ const showBook = () => {
   const [loading, setLoading] = useState(false)
 
   var { id } = useParams()
-  id = id.substring(1)
 
   useEffect(() => {
     setLoading(true)

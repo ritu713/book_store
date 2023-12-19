@@ -6,7 +6,7 @@ const book = require("../models/bookModel.js")
 router.get("/", async (req, res) => {
     try{
         const books = await book.find({})
-        return res.status(200).send({count: books.length, data: books})
+        return res.status(200).send({count: books.length, data: books});
     }
     catch(err){
         console.log("Error caught : ", err.message)
@@ -16,9 +16,11 @@ router.get("/", async (req, res) => {
 //get one book
 router.get("/:id", async (req, res) => {
     try {
-        const {id} = req.params;
+        let { id } = req.params;
+        id = id.substring(1)
+        console.log(id)
         const reqbook = await book.findById(id)
-        return res.status(200).json({reqbook})
+        return res.status(200).json(reqbook)
     }
     catch(err){
         console.log("Error caught : ", err.message)
@@ -30,7 +32,7 @@ router.get("/:id", async (req, res) => {
 router.post('/', async (req, res) => {
     try{
         if(!req.body.title || !req.body.author || !req.body.publishYear){
-            return res.status(400).send({message: "Please enter all required fields"})
+            return res.status(400).send({message: "Please enter all required fields"});
         }
 
         const newBook = {
@@ -69,7 +71,7 @@ router.put("/:id", async (req, res) => {
     }
     catch(err){
         console.log(err.message)
-        return res.status(500).send("Error : ", err.message)
+        return res.status(500).send("Error : ", err.message);
     }
 })
 
