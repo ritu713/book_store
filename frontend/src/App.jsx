@@ -8,7 +8,6 @@ import EditBook from './pages/editBook.jsx'
 import DeleteBook from './pages/deleteBook.jsx'
 
 const App = () => {
-  console.log("Entered app")
   return (
     <Routes>
       <Route path='/' element={ <Home/> }></Route>

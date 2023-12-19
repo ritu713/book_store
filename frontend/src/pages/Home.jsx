@@ -18,14 +18,14 @@ const Home = () => {
         axios
         .get(`http://localhost:5005/books`)
         .then((res) => {
-            setBooks(res.data.body)
+            setBooks(res.data.data)
             setLoading(false)
         })
         .catch((err) => {
             console.log(err)
             setLoading(false)
         })
-    })
+    }, [])
 
 
     return (
@@ -50,7 +50,7 @@ const Home = () => {
                     <tbody>
                         {
                             books.map((book, index) => {
-                                <tr key={book._id} className='h-8'>
+                                return (<tr key={book._id} className='h-8'>
                                     <td className='border border-slate-700 rounded-md text-center'> {index+1} </td>
                                     <td className='border border-slate-700 rounded-md text-center'> {book.title} </td>
                                     <td className='border border-slate-700 rounded-md text-center max-md: hidden'> {book.author} </td>
@@ -68,7 +68,7 @@ const Home = () => {
                                             </Link>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr>)
                             })
                         }
                     </tbody>

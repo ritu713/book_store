@@ -6,7 +6,7 @@ const book = require("../models/bookModel.js")
 router.get("/", async (req, res) => {
     try{
         const books = await book.find({})
-        return res.status(500).send({count: books.length, data: [books]})
+        return res.status(200).send({count: books.length, data: books})
     }
     catch(err){
         console.log("Error caught : ", err.message)
